@@ -1,0 +1,236 @@
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #1c2430;
+  --muted: #687385;
+  --border: #e2e7ee;
+  --accent: #2563eb;
+  --live: #16a34a;
+  --live-bg: rgba(22, 163, 74, 0.12);
+  --slot-bg: #f4f6f9;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e131c;
+    --card: #182030;
+    --text: #e8edf5;
+    --muted: #9aa5b8;
+    --border: #2a3446;
+    --accent: #60a5fa;
+    --live: #22c55e;
+    --live-bg: rgba(34, 197, 94, 0.15);
+    --slot-bg: #111826;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px 16px 32px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 20px 8px 12px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  line-height: 1.2;
+}
+
+.subtitle,
+.tz-note,
+.muted {
+  color: var(--muted);
+}
+
+.subtitle {
+  margin: 4px 0 0;
+}
+
+.tz-note {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+}
+
+.clock {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.clock-date {
+  font-weight: 500;
+}
+
+.clock-time {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+}
+
+.empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* Lists of live / upcoming rooms */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.live-item {
+  background: var(--live-bg);
+  border-color: var(--live) !important;
+}
+
+.room-title {
+  font-size: 1.1rem;
+}
+
+.badge-live {
+  flex-shrink: 0;
+  background: var(--live);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.start-time {
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+/* Day schedule grouped by room */
+.room-group + .room-group {
+  margin-top: 16px;
+}
+
+.room-group h3,
+.week-day h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slots li {
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  background: var(--slot-bg);
+}
+
+/* Day selector */
+.day-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.day-buttons button {
+  min-height: 44px;
+  padding: 8px 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.day-buttons button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Full week */
+.week-day + .week-day {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.week-day .slots li {
+  font-size: 0.95rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 24px;
+  line-height: 1.7;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (min-width: 720px) {
+  body {
+    font-size: 18px;
+  }
+}
