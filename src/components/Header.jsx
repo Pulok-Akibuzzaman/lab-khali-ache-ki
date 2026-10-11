@@ -8,6 +8,7 @@ export default function Header({
   activeCount,
   upcomingCount,
   semester,
+  visitorCount,
   onQuickFilterActive
 }) {
   const dateText = now.toLocaleDateString("en-US", {
