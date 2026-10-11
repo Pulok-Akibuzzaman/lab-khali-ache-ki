@@ -1903,9 +1903,122 @@ button.stat-pill:hover {
   opacity: 0.85;
 }
 
+@media (max-width: 768px) {
+  .app-layout {
+    padding: 12px 14px 40px;
+    gap: 16px;
+  }
+
+  .site-header {
+    padding: 16px 18px;
+    border-radius: var(--radius-lg);
+  }
+
+  .header-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .brand-title {
+    font-size: 1.4rem;
+  }
+
+  .brand-badge-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .clock-time-display {
+    font-size: 1.3rem;
+  }
+
+  .control-toolbar-card {
+    padding: 16px 14px;
+    border-radius: var(--radius-lg);
+  }
+
+  .toolbar-top-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    min-width: 100%;
+  }
+
+  .view-mode-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .view-btn {
+    flex: 1;
+    text-align: center;
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+
+  .day-tabs-list {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .day-tab-btn {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
+
 @media (max-width: 640px) {
   .footer-right {
     text-align: left;
+  }
+
+  .labs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-title {
+    font-size: 1.25rem;
+  }
+
+  .brand-bangla {
+    display: block;
+    font-size: 0.95rem;
+    margin-top: 2px;
+  }
+
+  .quick-summary-strip {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stat-pill {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .quick-room-shortcuts {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+
+  .shortcut-chip {
+    flex-shrink: 0;
   }
 }
 
