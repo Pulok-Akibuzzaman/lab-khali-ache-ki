@@ -61,3 +61,34 @@ export function getDhakaNow(date = new Date()) {
 export function isActive(hour, nowMinutes) {
   return toMinutes(hour.start) <= nowMinutes && nowMinutes < toMinutes(hour.end);
 }
+
+/** Returns formatted duration string, e.g. "1h", "1h 20m", "3h 10m" */
+export function formatDuration(start, end) {
+  const diff = toMinutes(end) - toMinutes(start);
+  if (diff <= 0) return "";
+  const hours = Math.floor(diff / 60);
+  const mins = diff % 60;
+  if (hours > 0 && mins > 0) return `${hours}h ${mins}m`;
+  if (hours > 0) return `${hours} hr${hours > 1 ? "s" : ""}`;
+  return `${mins} min`;
+}
+
+/** Returns human readable remaining time for an active slot */
+export function getTimeRemaining(end, nowMinutes) {
+  const diff = toMinutes(end) - nowMinutes;
+  if (diff <= 0) return "Ending now";
+  const hours = Math.floor(diff / 60);
+  const mins = diff % 60;
+  if (hours > 0) return `${hours}h ${mins}m remaining`;
+  return `${mins}m remaining`;
+}
+
+/** Returns human readable countdown until a slot starts */
+export function getTimeUntil(start, nowMinutes) {
+  const diff = toMinutes(start) - nowMinutes;
+  if (diff <= 0) return "Starting now";
+  const hours = Math.floor(diff / 60);
+  const mins = diff % 60;
+  if (hours > 0) return `in ${hours}h ${mins}m`;
+  return `in ${mins}m`;
+}
