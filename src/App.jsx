@@ -27,6 +27,29 @@ export default function App() {
   const [onlyActiveNow, setOnlyActiveNow] = useState(false);
   const [viewMode, setViewMode] = useState("grid"); // "grid" | "timeline" | "matrix"
 
+  // Live Visitor Counter
+  const [visitorCount, setVisitorCount] = useState(null);
+
+  useEffect(() => {
+    // Check session to count unique visitor per browser session
+    const hasVisitedThisSession = sessionStorage.getItem("ewu_lab_visited");
+    const endpoint = hasVisitedThisSession
+      ? "https://abacus.jasoncameron.dev/get/lab-khali-ache-ki/visits"
+      : "https://abacus.jasoncameron.dev/hit/lab-khali-ache-ki/visits";
+
+    fetch(endpoint)
+      .then((res) => res.json())
+      .then((data) => {
+        if (typeof data.value === "number") {
+          setVisitorCount(data.value);
+          sessionStorage.setItem("ewu_lab_visited", "true");
+        }
+      })
+      .catch(() => {
+        // Fallback gracefully if offline
+      });
+  }, []);
+
   // Sync theme with html root element
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -154,6 +177,7 @@ export default function App() {
         activeCount={activeHours.length}
         upcomingCount={upcomingHours.length}
         semester={semester}
+        visitorCount={visitorCount}
         onQuickFilterActive={handleQuickFilterActive}
       />
 
@@ -419,6 +443,13 @@ export default function App() {
           <div className="footer-right">
             <p>Verified from Practice Hour Schedule (Fall 2026)</p>
             <p className="footer-timestamp">Last updated: {lastUpdated} · Dhaka Standard Time (GMT+6)</p>
+            {visitorCount !== null && (
+              <p className="footer-visitor-counter">
+                <span className="visitor-badge-pulse" />
+                Total Visits: <strong>{visitorCount.toLocaleString()}</strong>
+              </p>
+            )}
+            <p className="footer-credits">Made with the help of Gemini and Claude</p>
           </div>
         </div>
       </footer>

@@ -69,3 +69,8 @@ src/
   visitor's device is set to another timezone.
 - The status refreshes every 30 seconds without a page reload.
 - A practice hour is active when `start <= now < end`.
+
+---
+
+*Made with the help of Gemini and Claude.*
+

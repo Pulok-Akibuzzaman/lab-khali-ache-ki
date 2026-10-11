@@ -113,6 +113,15 @@ export default function Header({
             Semester: <strong>{semester}</strong>
           </span>
         </div>
+
+        {visitorCount !== null && (
+          <div className="stat-pill stat-pill-visitor" title="Live total visits counted across all sessions">
+            <span className="visitor-pulse-dot" />
+            <span className="stat-pill-text">
+              Visitors: <strong>{visitorCount.toLocaleString()}</strong>
+            </span>
+          </div>
+        )}
       </div>
     </header>
   );

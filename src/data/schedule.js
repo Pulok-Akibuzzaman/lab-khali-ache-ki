@@ -261,6 +261,7 @@ export const practiceHours = [
   { roomId: "net-450", day: "Monday", start: "12:20", end: "13:20" },
   { roomId: "net-450", day: "Monday", start: "15:40", end: "16:40" },
   { roomId: "net-450", day: "Tuesday", start: "12:20", end: "13:20" },
+  { roomId: "net-450", day: "Tuesday", start: "15:40", end: "16:40" },
   { roomId: "net-450", day: "Wednesday", start: "08:00", end: "10:00" },
   { roomId: "net-450", day: "Wednesday", start: "10:10", end: "12:10" },
   { roomId: "net-450", day: "Wednesday", start: "12:20", end: "13:20" },
